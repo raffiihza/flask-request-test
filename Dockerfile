@@ -17,6 +17,6 @@ COPY . .
 # Default to 8080 if the PORT variable is not set.
 ENV PORT 8080
 
-# The command to run your application using the Gunicorn web server.
-# It listens on all network interfaces (0.0.0.0) and on the port specified by the $PORT env var.
-CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "app:app"]
+# --- THIS IS THE CORRECTED LINE ---
+# Use the shell form of CMD to allow environment variable substitution for $PORT.
+CMD gunicorn --bind 0.0.0.0:$PORT app:app
